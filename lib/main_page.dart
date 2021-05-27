@@ -194,7 +194,7 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ),
                         Expanded(
-                          flex: 2,
+                          flex: 3,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 5),
@@ -209,6 +209,19 @@ class _MainPageState extends State<MainPage> {
                                 Text(
                                   '${hotelList[randomNumber].location}, ${hotelList[randomNumber].region}',
                                   style: TextStyle(fontSize: 13),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.star,
+                                      size: 15,
+                                      color: Colors.amber,
+                                    ),
+                                    Text(
+                                      '4.9',
+                                      style: TextStyle(fontSize: 1),
+                                    )
+                                  ],
                                 )
                               ],
                             ),
