@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.arunika">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="arunika"
+        android:label="Arunika"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
