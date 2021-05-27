@@ -138,7 +138,7 @@ class _DetailPageState extends State<DetailPage> {
                                       decimalDigits: 0,
                                       symbol: 'Rp. ')
                                   .format(widget.hotel.price[_valueDropDown])
-                              : 'Rp.',
+                              : 'Rp. -',
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 20,

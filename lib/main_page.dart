@@ -1,9 +1,9 @@
 import 'dart:math';
-
-import 'package:arunika/detail_page.dart';
 import 'package:arunika/model/hotel.dart';
-import 'package:arunika/widget/favorite_button_widget.dart';
+import 'package:arunika/widget/mobile_listview_widget.dart';
+import 'package:arunika/widget/mobile_popular_widget.dart';
 import 'package:arunika/widget/navigation_drawer_widget.dart';
+import 'package:arunika/widget/search_file_widget.dart';
 import 'package:arunika/widget/subtitle_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -49,27 +49,7 @@ class _MainPageState extends State<MainPage> {
               flex: 1,
               child: Row(
                 children: [
-                  Flexible(
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 50,
-                      margin: EdgeInsets.only(right: 8),
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius: BorderRadius.circular(15)),
-                      child: TextField(
-                        controller: controllerSearch,
-                        decoration: InputDecoration(
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.black,
-                            ),
-                            hintText: "search",
-                            border: InputBorder.none),
-                      ),
-                    ),
-                  ),
+                  SearchFieldWidget(controllerSearch: controllerSearch),
                   Container(
                     height: 50,
                     width: 50,
@@ -93,80 +73,7 @@ class _MainPageState extends State<MainPage> {
                   SubtitleWidget(text: 'Discover', fontSize: 20),
                   Container(
                     height: MediaQuery.of(context).size.height * .46,
-                    child: ListView.builder(
-                      itemCount: hotelList.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        final Hotel hotel = hotelList[index];
-                        return InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetailPage(hotel: hotel),
-                              ),
-                            );
-                          },
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * .56,
-                            margin: EdgeInsets.only(right: 9),
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Colors.amber,
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                  image: AssetImage(hotel.imageAsset),
-                                  fit: BoxFit.cover),
-                            ),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    FavoriteButtonWidget(
-                                      alignment: Alignment.topRight,
-                                    )
-                                  ],
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      hotel.name,
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20),
-                                    ),
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Icon(
-                                          Icons.location_pin,
-                                          color: Colors.white,
-                                          size: 15,
-                                        ),
-                                        SizedBox(
-                                          width: 5,
-                                        ),
-                                        Text(
-                                          hotel.location,
-                                          style: TextStyle(color: Colors.white),
-                                        )
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
-                    ),
+                    child: MobileListviewWidget(),
                   )
                 ],
               ),
@@ -178,58 +85,7 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   SubtitleWidget(text: 'Popular', fontSize: 20),
-                  Container(
-                    height: MediaQuery.of(context).size.height * .1,
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                  image: AssetImage(
-                                      hotelList[randomNumber].imageAsset),
-                                  fit: BoxFit.cover),
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 3,
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 10, vertical: 5),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Text(
-                                  hotelList[randomNumber].name,
-                                  style: TextStyle(fontSize: 18),
-                                ),
-                                Text(
-                                  '${hotelList[randomNumber].location}, ${hotelList[randomNumber].region}',
-                                  style: TextStyle(fontSize: 13),
-                                ),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      Icons.star,
-                                      size: 15,
-                                      color: Colors.amber,
-                                    ),
-                                    Text(
-                                      '4.9',
-                                      style: TextStyle(fontSize: 1),
-                                    )
-                                  ],
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  MobilePopularWidget(randomNumber: randomNumber),
                 ],
               ),
             )
