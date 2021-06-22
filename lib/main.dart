@@ -1,4 +1,4 @@
-import 'package:arunika/main_page.dart';
+import 'package:arunika/ui/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 void main() {

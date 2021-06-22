@@ -1,7 +1,4 @@
-import 'package:arunika/detail_page.dart';
-import 'package:arunika/model/hotel.dart';
-import 'package:arunika/widget/favorite_button_widget.dart';
-import 'package:flutter/material.dart';
+part of 'widgets.dart';
 
 class MobileListviewWidget extends StatelessWidget {
   const MobileListviewWidget({
@@ -25,15 +22,14 @@ class MobileListviewWidget extends StatelessWidget {
             );
           },
           child: Container(
-            width: MediaQuery.of(context).size.width * .56, 
+            width: MediaQuery.of(context).size.width * .56,
             margin: EdgeInsets.only(right: 9),
             padding: const EdgeInsets.all(8.0),
             decoration: BoxDecoration(
               color: Colors.amber,
               borderRadius: BorderRadius.circular(15),
               image: DecorationImage(
-                  image: AssetImage(hotel.imageAsset),
-                  fit: BoxFit.cover),
+                  image: AssetImage(hotel.imageAsset), fit: BoxFit.cover),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

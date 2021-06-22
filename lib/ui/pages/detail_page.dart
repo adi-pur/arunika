@@ -1,7 +1,4 @@
-import 'package:arunika/model/hotel.dart';
-import 'package:arunika/widget/favorite_button_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+part of 'pages.dart';
 
 class DetailPage extends StatefulWidget {
   final Hotel hotel;
@@ -34,7 +31,7 @@ class _DetailPageState extends State<DetailPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded( 
+                  Expanded(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

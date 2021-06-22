@@ -1,11 +1,4 @@
-import 'dart:math';
-import 'package:arunika/model/hotel.dart';
-import 'package:arunika/widget/mobile_listview_widget.dart';
-import 'package:arunika/widget/mobile_popular_widget.dart';
-import 'package:arunika/widget/navigation_drawer_widget.dart';
-import 'package:arunika/widget/search_file_widget.dart';
-import 'package:arunika/widget/subtitle_widget.dart';
-import 'package:flutter/material.dart';
+part of 'pages.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -14,7 +7,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   var controllerSearch = TextEditingController();
-  int randomNumber = Random().nextInt(hotelList.length + 1);
+  int randomNumber = Random().nextInt(hotelList.length);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,10 +63,17 @@ class _MainPageState extends State<MainPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SubtitleWidget(text: 'Discover', fontSize: 20),
+                  SubtitleWidget(text: 'Recommended', fontSize: 22),
                   Container(
                     height: MediaQuery.of(context).size.height * .46,
-                    child: MobileListviewWidget(),
+                    child: ListView.builder(
+                      itemCount: hotelList.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        final Hotel hotel = hotelList[index];
+                        return CardWidget(hotel: hotel);
+                      },
+                    ),
                   )
                 ],
               ),

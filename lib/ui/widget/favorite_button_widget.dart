@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+part of 'widgets.dart';
 
 class FavoriteButtonWidget extends StatefulWidget {
   final Alignment alignment;

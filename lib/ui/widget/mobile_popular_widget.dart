@@ -1,5 +1,4 @@
-import 'package:arunika/model/hotel.dart';
-import 'package:flutter/material.dart';
+part of 'widgets.dart';
 
 class MobilePopularWidget extends StatelessWidget {
   const MobilePopularWidget({
